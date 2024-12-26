@@ -18,7 +18,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 	regex "github.com/tkdeng/goregex"
 	"github.com/tkdeng/goutil"
-	"github.com/tkdeng/webserver/cron"
+	"github.com/tkdeng/simplewebserver/cron"
 )
 
 var hasFailedSSL bool

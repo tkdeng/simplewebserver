@@ -1,4 +1,4 @@
-module chat-app
+module github.com/tkdeng/simplewebserver
 
 go 1.22.9
 
@@ -8,7 +8,6 @@ require (
 	github.com/tkdeng/goregex v0.1.0
 	github.com/tkdeng/goutil v0.7.2
 	github.com/tkdeng/staticweb v0.0.4
-	github.com/tkdeng/webserver v0.0.0-20241106144902-3a4c8d2149f0
 )
 
 require (

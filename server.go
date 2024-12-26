@@ -1,7 +1,7 @@
 package server
 
 import (
-	"chat-app/render"
+	"github.com/tkdeng/simplewebserver/render"
 	"os"
 	"path/filepath"
 	"strings"
