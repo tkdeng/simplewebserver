@@ -1,0 +1,20 @@
+title: "Web Server"
+app_title: "WebServer"
+desc: "A Web Server."
+
+public_uri: "/public/"
+
+port_http: 8080
+port_ssl: 8443
+
+origins: [
+  "localhost",
+  # "example.com",
+]
+
+proxies: [
+  "127.0.0.1",
+  # "192.168.0.1",
+]
+
+DebugMode: yes

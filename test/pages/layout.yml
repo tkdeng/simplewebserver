@@ -1,0 +1,14 @@
+meta:
+  SiteTitle: "Web Server"
+  AppTitle: "WebServer"
+  title: "Web Server"
+  desc: "A Web Server."
+  icon: "/assets/icon.png"
+  class: "bg-image"
+
+styles:
+  - url: "/theme/config.css"
+  - url: "/theme/style.css"
+
+scripts:
+  - url: "/theme/script.js"
