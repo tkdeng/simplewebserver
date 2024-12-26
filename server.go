@@ -1,10 +1,12 @@
 package server
 
 import (
-	"github.com/tkdeng/simplewebserver/render"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
+
+	"github.com/tkdeng/simplewebserver/render"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/static"
@@ -110,11 +112,18 @@ func (app *App) Listen() error {
 		if url == "/" || url == "" {
 			url = "index"
 		}
+		url = strings.Trim(url, "/")
 
 		if path, err := goutil.JoinPath(Config.Root, "pages.dist", url+".html"); err == nil {
 			if stat, err := os.Stat(path); err == nil && !stat.IsDir() {
 				c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-				c.SendStatus(fiber.StatusOK)
+
+				if i, err := strconv.Atoi(url); err == nil && i >= 100 && i <= 599 {
+					c.SendStatus(i)
+				} else {
+					c.SendStatus(200)
+				}
+
 				return c.Render(url, fiber.Map{})
 			}
 		}
@@ -122,13 +131,13 @@ func (app *App) Listen() error {
 		if path, err := goutil.JoinPath(Config.Root, "pages.dist", "404.html"); err == nil {
 			if stat, err := os.Stat(path); err == nil && !stat.IsDir() {
 				c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-				c.SendStatus(fiber.StatusNotFound)
+				c.SendStatus(404)
 				return c.Render("404", fiber.Map{})
 			}
 		}
 
 		c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-		c.SendStatus(fiber.StatusNotFound)
+		c.SendStatus(404)
 		return c.Send([]byte("<h1>Error 404</h1><h2>Page Not Found!</h2>"))
 	})
 
