@@ -1,6 +1,8 @@
 package server
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test(t *testing.T) {
 	app, err := New("./test")

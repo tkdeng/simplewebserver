@@ -48,13 +48,19 @@ func main(){
   // create new server
   app, err := server.New("./app")
 
+  //note: page.dist files will automatically be statically rendered,
+  // and take priority over gofiber methods
+
   // do normal gofiber stuff (optional)
-  app.Get("/", func(c fiber.Ctx) error {
-    return c.SendString("Hello, World!")
+  app.Get("/api", func(c fiber.Ctx) error {
+    return c.SendString("Hello, API!")
   })
 
+  //note: page.dist files will automatically be statically rendered,
+  // and take priority over gofiber methods
   app.Get("/", func(c fiber.Ctx) error {
-    return c.Render(c, "index", fiber.Map{})
+    // this will be ignored if index.html exists
+    return c.SendString("Hello, World!")
   })
 
   // listen with openssl (default port: [http: 8080, ssl: 8443])
