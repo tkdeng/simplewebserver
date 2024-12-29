@@ -6,7 +6,7 @@ require (
 	github.com/gofiber/fiber/v3 v3.0.0-beta.3
 	github.com/tkdeng/goregex v0.1.0
 	github.com/tkdeng/goutil v0.7.2
-	github.com/tkdeng/staticweb v0.0.4
+	github.com/tkdeng/staticweb v0.0.5
 )
 
 require (
