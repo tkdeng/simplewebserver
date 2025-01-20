@@ -53,20 +53,22 @@ func New(root string, config ...fiber.Config) (App, error) {
 
 	if len(config) == 0 {
 		config = append(config, fiber.Config{
-			AppName:                 Config.AppTitle,
-			ServerHeader:            Config.Title,
-			TrustedProxies:          Config.Proxies,
-			EnableTrustedProxyCheck: true,
-			EnableIPValidation:      true,
+			AppName:      Config.AppTitle,
+			ServerHeader: Config.Title,
+			TrustProxyConfig: fiber.TrustProxyConfig{
+				Proxies: Config.Proxies,
+			},
+			TrustProxy:         true,
+			EnableIPValidation: true,
 		})
 	} else {
 		config[0].AppName = Config.AppTitle
 		config[0].ServerHeader = Config.Title
 
-		if config[0].TrustedProxies == nil {
-			config[0].TrustedProxies = Config.Proxies
+		if config[0].TrustProxyConfig.Proxies == nil {
+			config[0].TrustProxyConfig.Proxies = Config.Proxies
 		} else {
-			config[0].TrustedProxies = append(config[0].TrustedProxies, Config.Proxies...)
+			config[0].TrustProxyConfig.Proxies = append(config[0].TrustProxyConfig.Proxies, Config.Proxies...)
 		}
 	}
 
@@ -89,7 +91,7 @@ func New(root string, config ...fiber.Config) (App, error) {
 
 	compressAssets := !Config.DebugMode
 	app.Get("/theme/*", static.New(Config.Root+"/theme", static.Config{Compress: compressAssets}))
-	// app.Get("/assets/wasm/*", static.New(Config.Root+"/wasm", static.Config{Compress: compressAssets}))
+	app.Get("/assets/wasm/*", static.New(Config.Root+"/wasm.dist", static.Config{Compress: compressAssets}))
 	app.Get("/assets/*", static.New(Config.Root+"/assets", static.Config{Compress: compressAssets}))
 	if Config.PublicURI != "" {
 		app.Get(Config.PublicURI, static.New(Config.Root+"/public", static.Config{Compress: compressAssets, Browse: true}))

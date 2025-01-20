@@ -12,3 +12,5 @@ styles:
 
 scripts:
   - url: "/theme/script.js"
+  - url: "/assets/wasm/script.wasm"
+    wasm: "go"
