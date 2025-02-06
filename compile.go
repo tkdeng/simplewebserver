@@ -49,22 +49,7 @@ func compile() {
 }
 
 func compTemplates() {
-	if err := staticweb.Compile(Config.Root+"/pages", Config.Root+"/pages.dist"); err != nil {
-		fmt.Println(err)
-	}
-
-	lastUpdate := time.Now().UnixMilli()
-
-	fw := goutil.FileWatcher()
-	fw.OnAny = func(path, op string) {
-		if now := time.Now().UnixMilli(); now-lastUpdate > 1000 {
-			lastUpdate = now
-			if err := staticweb.Compile(Config.Root+"/pages", Config.Root+"/pages.dist"); err != nil {
-				fmt.Println(err)
-			}
-		}
-	}
-	fw.WatchDir(Config.Root + "/pages")
+	staticweb.Live(Config.Root+"/pages", Config.Root+"/pages.dist")
 }
 
 func compWasm() {
