@@ -9,7 +9,7 @@ require (
 	github.com/tkdeng/gobash v0.0.0-20240829205649-8eb77a299f33
 	github.com/tkdeng/goregex v0.1.0
 	github.com/tkdeng/goutil v0.7.2
-	github.com/tkdeng/staticweb v0.2.0
+	github.com/tkdeng/staticweb v0.2.2
 )
 
 require (
@@ -20,7 +20,7 @@ require (
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/gofiber/schema v1.2.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.7 // indirect
-	github.com/gomarkdown/markdown v0.0.0-20250202022148-4f606c78d442 // indirect
+	github.com/gomarkdown/markdown v0.0.0-20250207164621-7a1f277a159e // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
@@ -37,7 +37,7 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	golang.org/x/crypto v0.32.0 // indirect
+	golang.org/x/crypto v0.33.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
